@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<!-- NMML reference: https://gist.github.com/1763850 -->
+	
+	<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
+	<meta title="Influenca" company="neuroMADLAB" file="Influenca" package="com.neuroMADLAB.Influenca" version="0.0.8" />
+	
+	<!-- output -->
+	<app main="Main" title="Influenca" company="neuroMADLAB" file="Influenca" path="bin" package="com.neuroMADLAB.Influenca" version="0.0.8" />
+	
+	<window background="#000000" />
+	<!-- <window width="1600" height="900" unless="mobile" /> -->
+	<!-- <window orientation="landscape" vsync="false" antialiasing="0" if="cpp" /> -->
+	<!--<window fullscreen="true" /> -->
+	<!-- <window width="1920" height="1080" unless="mobile" /> -->
+	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
+	
+	<!-- Android specific settings -->
+	<android target-sdk-version="30" if="android" />
+	<config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<config:android permission="android.permission.ACCESS_NETWORK_STATE"/>
+	<config:android permission="android.permission.INTERNET"/>
+	<config:android permission="android.permission.READ_EXTERNAL_STORAGE"/>
+	<config:android permission="android.permission.ACCESS_WIFI_STATE" />
+	<architecture name="armv7" if="android" />
+	<architecture name="arm64" if="android" />
+	<architecture name="X86" if="android" />
+	
+	<!-- classpath, haxe libs -->
+	<source path="src" />
+	<source path="assets" />
+	<haxelib name="openfl" />
+	<haxelib name="actuate" />
+	<haxelib name="record-macros" />
+	<haxelib name="haxeui-core" />
+	<haxelib name="haxeui-openfl" />
+	<haxelib name="random" />
+	<haxelib name="crashdumper"/>
+	<haxelib name="android6permissions" if="mobile"/>
+	
+	<!-- Haxedefs -->
+	<haxedef name="HXCPP_STACK_LINE"/>    <!--if you want line numbers-->
+	<haxedef name="HXCPP_STACK_TRACE"/>    <!--if you want stack traces-->
+
+	<!-- Include path to extension for Android external storage -->
+	<include path="Extensions/AndroidExternalStorage" if="mobile"/>
+	
+	<!-- Shrink application size -->
+	<haxeflag name="-dce" value="full" />
+	
+	<!-- assets -->
+	<icon path="assets/influenca.svg" embed="true" />
+	
+	<!-- load and embed assets from img folder -->
+	<assets path="assets/img" rename="img" embed="false" />
+	<assets path="assets/fonts" rename="fonts" embed="true" />
+	<assets path="assets/lang" rename="lang" embed="false" />
+	<assets if="mobile" path="assets/img" rename="img" embed="false" />
+	<assets if="mobile" path="assets/fonts" rename="fonts" embed="false" />
+	<assets if="mobile" path="assets/lang" rename="lang" embed="false" />
+	
+</project>

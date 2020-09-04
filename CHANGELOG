@@ -1,0 +1,7 @@
+0.0.8
+Exceptions due to non-reachable database are caught to prevent Influenca from crashing
+Local database can be exported to allow to transfer data manually if database can't be accessed from a device
+Progress of player is only synchronized from the database in case it is newer than the local game files
+
+0.0.6
+Changed time limitation from 3 runs a day to 2 hours between runs (entries regarding runs per day and datetime are preserved)
